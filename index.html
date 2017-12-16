@@ -109,7 +109,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-3 col-sm-4 col-xs-6 attention">
+            <div class="frame-div  col-md-3 col-sm-4 col-xs-6 attention">
               <img  class="img-fluid" src="./assets/img/Vorlage Rahmen.png" alt="">
             </div>
           </div>
@@ -124,10 +124,10 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-3 col-sm-4 col-xs-6 attention" style="background-color: white">
+            <div class="banner-div col-md-3 col-sm-4 col-xs-6 attention" style="background-color: white">
               <img  class="img-fluid" src="./assets/img/Text Balken Hintergrund 4.png" alt="">
             </div>
-            <div class="col-md-3 col-sm-4 col-xs-6 attention">
+            <div class="banner-div col-md-3 col-sm-4 col-xs-6 attention">
               <img  class="img-fluid" src="./assets/img/Text Balken Hintergrund.png" alt="">
             </div>
           </div>
@@ -187,10 +187,11 @@
     $('#editor').show('slow');
   });
   
-  var back_img_src = "./assets/img/nophoto.jpg", banner_src = null, slogan_text = null, text_color = null;
+  var back_img_src = "./assets/img/nophoto.jpg", frame_src = null, banner_src = null, slogan_text = null, text_color = null;
   var canvas = new fabric.Canvas('visible',  { width: window.innerWidth });
     
   function render(cur_canvas){
+      canvas.clear();
       var back_img = new Image();
       back_img.src = back_img_src;
       var scale_value = window.innerWidth / back_img.width;
@@ -202,6 +203,44 @@
             left: 0,
             top: 0
       });
+      if(frame_src != null){
+        var fr_image = new Image();
+        fr_image.src = frame_src;
+        fr_image.onload = function(){
+          var frame = new fabric.Image(fr_image);
+          frame.set({
+            height : canvas.height,
+            width : canvas.width,
+            top : 0,
+            left : 0,
+            lockMovementX : true,
+            lockMovementY : true,
+            lockScalingX : true,
+            lockScalingY : true,
+            lockMovementX : true,
+            lockRotation : true,
+          });
+          canvas.add(frame);
+          canvas.bringToFront(frame)
+        }
+      }
+    
+       if(banner_src != null){
+        var bn_image = new Image();
+        bn_image.src = banner_src;
+        bn_image.onload = function(){
+          var banner = new fabric.Image(bn_image);
+          var scale_banner = (canvas.width - 200) / bn_image.width;
+          banner.set({
+            height : bn_image.height * scale_banner,
+            width : bn_image.width * scale_banner,
+            top : 100,
+            left : 100,
+          });
+          canvas.add(banner);
+          canvas.bringToFront(banner)
+        }
+      }
     }
 
     $(function(){
@@ -231,6 +270,16 @@
 
     $('#upload').on('click', function(){
       $('#imgLoader').click();
+    });
+  
+    $('.frame-div').on('click', function(){
+      frame_src = $(this).find('img').attr('src');
+      render(canvas);
+    });
+  
+    $('.banner-div').on('click', function(){
+      banner_src = $(this).find('img').attr('src');
+      render(canvas);
     });
 </script>
 </html>
