@@ -147,29 +147,16 @@
 	   $('#editor').show('slow');
 	 });
 	 
-	 var back_img_src = "./assets/img/nophoto.jpg", frame_src = null, banner_src = null, slogan_text = null, text_color = '#ffffff';
+	 var back_image_src = "./assets/img/nophoto.jpg", frame_src = null, banner_src = null, slogan_text = null, text_color = '#ffffff';
 	 var canvas = new fabric.Canvas('visible',  { width: window.innerWidth, preserveObjectStacking: true });
 	   
 	 function render(cur_canvas){
 	     canvas.clear();
-	     var back_img = new Image();
-	     back_img.src = back_img_src;
-	     var scale_value = window.innerWidth / back_img.width;
-	     cur_canvas.setWidth(back_img.width * scale_value);
-	     cur_canvas.setHeight(back_img.height * scale_value);
-	     cur_canvas.setBackgroundImage(back_img_src, canvas.renderAll.bind(cur_canvas), {
-	           scaleX: scale_value,
-	           scaleY: scale_value,
-	           left: 0,
-	           top: 0
-	     });
-	   
-	     if(frame_src != null){
-	       var fr_image = new Image();
-	       fr_image.src = frame_src;
-	       fr_image.onload = function(){
-	         var frame = new fabric.Image(fr_image);
-	         frame.set({
+	     var back_image = new Image();
+	       back_image.src = back_image_src;
+	       back_image.onload = function(){
+	         var background = new fabric.Image(back_image);
+	         background.set({
 	           height : canvas.height,
 	           width : canvas.width,
 	           top : 0,
@@ -181,58 +168,79 @@
 	           lockMovementX : true,
 	           lockRotation : true,
 	         });
-	         canvas.add(frame);
-	         canvas.bringToFront(frame);
-	         if(banner_src != null){
-	           var bn_image = new Image();
-	           bn_image.src = banner_src;
-	           bn_image.onload = function(){
-	             var banner = new fabric.Image(bn_image);
-	             var scale_banner = (canvas.width - 200) / bn_image.width;
-	             banner.set({
-	               height : bn_image.height * scale_banner,
-	               width : bn_image.width * scale_banner,
-	               top : 100,
-	               left : 100,
-	             });
-	             canvas.add(banner);
-	             canvas.bringToFront(banner);
-	             if(slogan_text != null){
-	               var text = new fabric.Text(slogan_text, { left: 120, top: 120, fill: text_color});
-	               canvas.add(text); 
-	               canvas.bringToFront(text);
-	             }
-	           }
-	         }
-	       }
-	     }
-	     else if(banner_src != null){
-	         var bn_image = new Image();
-	         bn_image.src = banner_src;
-	         bn_image.onload = function(){
-	           var banner = new fabric.Image(bn_image);
-	           var scale_banner = (canvas.width - 200) / bn_image.width;
-	           banner.set({
-	             height : bn_image.height * scale_banner,
-	             width : bn_image.width * scale_banner,
-	             top : 100,
-	             left : 100,
-	           });
-	           canvas.add(banner);
-	           canvas.bringToFront(banner);
-	           if(slogan_text != null){
-	             var text = new fabric.Text(slogan_text, { left: 120, top: 120, fill: text_color});
-	             canvas.add(text); 
-	             canvas.bringToFront(text);
-	           }
-	         }
-	       }
-	       else if(slogan_text != null){
-	         var text = new fabric.Text(slogan_text, { left: 120, top: 120, fill: text_color});
-	         canvas.add(text); 
-	         canvas.bringToFront(text);
-	       }
-	   }
+	         canvas.add(background);
+	         canvas.bringToFront(background);
+	   
+             if(frame_src != null){
+               var fr_image = new Image();
+               fr_image.src = frame_src;
+               fr_image.onload = function(){
+                 var frame = new fabric.Image(fr_image);
+                 frame.set({
+                   height : canvas.height,
+                   width : canvas.width,
+                   top : 0,
+                   left : 0,
+                   lockMovementX : true,
+                   lockMovementY : true,
+                   lockScalingX : true,
+                   lockScalingY : true,
+                   lockMovementX : true,
+                   lockRotation : true,
+                 });
+                 canvas.add(frame);
+                 canvas.bringToFront(frame);
+                 if(banner_src != null){
+                   var bn_image = new Image();
+                   bn_image.src = banner_src;
+                   bn_image.onload = function(){
+                     var banner = new fabric.Image(bn_image);
+                     var scale_banner = (canvas.width - 200) / bn_image.width;
+                     banner.set({
+                       height : bn_image.height * scale_banner,
+                       width : bn_image.width * scale_banner,
+                       top : 100,
+                       left : 100,
+                     });
+                     canvas.add(banner);
+                     canvas.bringToFront(banner);
+                     if(slogan_text != null){
+                       var text = new fabric.Text(slogan_text, { left: 120, top: 120, fill: text_color});
+                       canvas.add(text); 
+                       canvas.bringToFront(text);
+                     }
+                   }
+                 }
+               }
+             }
+             else if(banner_src != null){
+                 var bn_image = new Image();
+                 bn_image.src = banner_src;
+                 bn_image.onload = function(){
+                   var banner = new fabric.Image(bn_image);
+                   var scale_banner = (canvas.width - 200) / bn_image.width;
+                   banner.set({
+                     height : bn_image.height * scale_banner,
+                     width : bn_image.width * scale_banner,
+                     top : 100,
+                     left : 100,
+                   });
+                   canvas.add(banner);
+                   canvas.bringToFront(banner);
+                   if(slogan_text != null){
+                     var text = new fabric.Text(slogan_text, { left: 120, top: 120, fill: text_color});
+                     canvas.add(text); 
+                     canvas.bringToFront(text);
+                   }
+                 }
+               }
+             else if(slogan_text != null){
+                 var text = new fabric.Text(slogan_text, { left: 120, top: 120, fill: text_color});
+                 canvas.add(text); 
+                 canvas.bringToFront(text);
+               }
+           }
+      }
 
 	   $(function(){
 	     render(canvas);
