@@ -154,7 +154,19 @@
 	    
 	    var back_image_src = "./assets/img/nophoto.jpg", frame_src = null, banner_src = null, slogan_text = null, text_color = '#ffffff';
 	    var canvas = new fabric.Canvas('visible',  { width: window.innerWidth, preserveObjectStacking: true });
-	      
+	    var disableScroll = function(){
+          canvas.allowTouchScrolling = false;
+        };
+
+        var enableScroll = function(){
+          canvas.allowTouchScrolling = true;
+        };
+
+        canvas.on('object:moving', disableScroll);
+        canvas.on('object:scaling', disableScroll);
+        canvas.on('object:rotating', disableScroll);
+        canvas.on('mouse:up', enableScroll);
+      
 	    function render(cur_canvas){
 	        canvas.clear();
 	        var back_image = new Image();
