@@ -106,8 +106,10 @@
 
             <div class="container-fluid no-margin-padding" >
                 <div class="row no-gutters">
-                    <div class="col-12 text-center">
-                        <button class="btn btn-sm btn-info" id="upload" type="button"><i class="fa fa-upload"></i> Upload Image</button> <input class="form-control" id="imgLoader" placeholder="Default" style="display: none" type="file">
+                    <div class="col-12">
+                        <button class="btn btn-sm btn-info float-left" id="reset" type="button"><i class="fa fa-refresh"></i> Reset</button> 
+                      
+                        <button class="btn btn-sm btn-info float-right" id="upload" type="button"><i class="fa fa-upload"></i> Upload Image</button> <input class="form-control" id="imgLoader" placeholder="Default" style="display: none" type="file">
                     </div>
                 </div>
             </div><br>
@@ -312,6 +314,11 @@
 	        }
 	        reader.readAsDataURL(e.target.files[0]);
 	      };
+          $("#reset").on('click', function(){
+	        back_image_src = "./assets/img/nophoto.jpg", frame_src = null, banner_src = null, slogan_text = null, text_color = '#ffffff';
+            render(canvas);
+	      });
+      
       
 	      $('#upload').on('click', function(){
 	        $('#imgLoader').click();
