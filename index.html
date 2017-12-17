@@ -10,9 +10,23 @@
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet">
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet"><!-- CSS Files -->
 	<link href="./assets/css/bootstrap.min.css" rel="stylesheet">
-	<link href="./assets/css/now-ui-kit.css?v=1.1.0" rel="stylesheet"><!-- CSS Just for demo purpose, don't include it in your project -->
-	<link href="./assets/css/demo.css" rel="stylesheet">
+	<link href="./assets/css/now-ui-kit.css?v=1.1.0" rel="stylesheet">
+	
+  
 	<style>
+            html, body {
+                height: 100%;
+            }
+
+            html {
+                display: table;
+                margin: auto;
+            }
+
+            body {
+                display: table-cell;
+                vertical-align: middle;
+            }
 	        @font-face {
 	          font-family: "Montserrat-Regular";
 	          src: url("./assets/fonts/Montserrat-Regular.otf");
@@ -38,15 +52,11 @@
 	        .attention:hover{
 	          border: 2px solid #009ee3;
 	        }
-	        
-	        .testimonial-group > .row {
-	          overflow-x: auto;
-	          white-space: nowrap;
-	        }
-	        .testimonial-group > .row > .col-xs-4 {
-	          display: inline-block;
-	          float: none;
-	        }
+      
+            .no-margin-padding{
+              margin: 0!important; 
+              padding: 0!important;
+            }
 	        
 	</style>
 </head>
@@ -59,70 +69,97 @@
 						<div class="header header-primary text-center"><img alt="" class="img-fluid" src="./assets/img/Logo-Junge-Liberale-web.png"></div><br>
 						<div class="content">
 							<h5 class="mag-text"><b>Content Generator</b></h5>
-							<p class="mag-text"><b>Please press "Get Started" button to start creating.</b></p>
+							<p class="mag-text"><b>Please Scroll-down to get started.</b></p>
 						</div>
+                        <!--
 						<div class="footer text-center" id="hide-btn">
 							<a class="btn btn-info btn-lg"><b>Get Started</b></a>
 						</div>
+-                       -->
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div id="editor" style="display: none;">
-		<img alt="" class="img-fluid" src="./assets/img/Logo-Junge-Liberale-web.png" style="height: 10vh">
-		<canvas id="visible"></canvas>
-		<div class="container">
-			<div class="row">
-				<div class="text-center">
-					<button class="btn btn-sm btn-info float-right" id="upload" type="button"><i class="fa fa-upload"></i> Upload</button> <input class="form-control" id="imgLoader" placeholder="Default" style="display: none" type="file">
-				</div>
-			</div>
-		</div><br>
-		<div class="container testimonial-group">
-			<div class="row">
-				<div class="col-12 mag-text">
-					Add Frame
-				</div>
-			</div>
-			<div class="row">
-				<div class="frame-div col-md-3 col-sm-4 col-xs-6 attention"><img alt="" class="img-fluid" src="./assets/img/Vorlage%20Rahmen.png"></div>
-			</div>
-		</div><br>
-		<div class="container">
-			<div class="row">
-				<div class="col-12 mag-text">
-					Add Banner
-				</div>
-			</div>
-			<div class="row">
-				<div class="banner-div col-md-3 col-sm-4 col-xs-6 attention" style="background-color: white"><img alt="" class="img-fluid" src="./assets/img/Text%20Balken%20Hintergrund%204.png"></div>
-				<div class="banner-div col-md-3 col-sm-4 col-xs-6 attention"><img alt="" class="img-fluid" src="./assets/img/Text%20Balken%20Hintergrund.png"></div>
-			</div>
-		</div><br>
-		<div class="container">
-			<div class="row">
-				<div class="col mag-text">
-					Add Text
-				</div>
-			</div>
-			<div class="row" style="padding: 30px">
-				<div>
-					Please choose color <input type="color" value="#ffffff">
-				</div>
-			</div><br>
-			<div class="row" style="padding: 10px">
-				<input class="form-control" placeholder="" style="border: 0px solid white; border-radius: 0px; border-bottom: 2px solid #009ee3" type="text"> <button class="btn btn-info" id="slogan-add">Add</button>
-			</div>
-		</div><br>
-		<div class="container">
-			<div class="row">
-				<div class="col-12 text-center">
-					<button class="btn btn-info" id="download-button">Download Image</button>
-				</div>
-			</div>
-		</div>
-	</div><!--   Core JS Files   -->
+
+    <div id="editor" class="container-fluid no-margin-padding">
+      <div class="row no-gutters justify-content-center">
+        <div class = "col-12">
+            <div class="container-fluid no-margin-padding">
+              <!--
+               <div class="row no-gutters">
+                  <div class="col-12">
+                    <img alt="" class="img-fluid" src="./assets/img/Logo-Junge-Liberale-web.png" style="height: 10vh">
+                  </div> 
+               </div>
+                -->
+               <div class="row no-gutters">
+                  <canvas id="visible" class="col-12 no-margin-padding"></canvas>
+               </div>
+
+            </div>
+
+            <div class="container-fluid no-margin-padding" >
+                <div class="row no-gutters">
+                    <div class="col-12 text-center">
+                        <button class="btn btn-sm btn-info" id="upload" type="button"><i class="fa fa-upload"></i> Upload Image</button> <input class="form-control" id="imgLoader" placeholder="Default" style="display: none" type="file">
+                    </div>
+                </div>
+            </div><br>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 mag-text">
+                        Add Frame
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="frame-div col-6 attention"><img alt="" class="img-fluid" src="./assets/img/Vorlage%20Rahmen.png"></div>
+                </div>
+            </div><br>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 mag-text">
+                        Add Banner
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="banner-div col-6 attention" style="background-color: white"><img alt="" class="img-fluid" src="./assets/img/Text%20Balken%20Hintergrund%204.png"></div>
+                    <div class="banner-div col-6 attention"><img alt="" class="img-fluid" src="./assets/img/Text%20Balken%20Hintergrund.png"></div>
+                </div>
+            </div><br>
+            <div class="container">
+                <div class="row">
+                    <div class="col mag-text">
+                        Add Text
+                    </div>
+                </div>
+                <div class="row">
+                    <div class = "col-12">
+                        Please choose color <input type="color" value="#ffffff">
+                    </div>
+                </div>
+                <div class="row" style="padding: 10px"> 
+                    <div class = "col-12">
+                      <input id="slogan-text" class="form-control" placeholder="" style="border: 0px solid white; border-radius: 0px; border-bottom: 2px solid #009ee3" type="text"> 
+                    </div>
+                </div>
+                <div class="row"> 
+                    <div class = "col-12">
+                      <button class="btn btn-info float-right" id="slogan-add"> Add </button>
+                    </div>
+                </div>
+            </div><br>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <button class="btn btn-info" id="download-button"><i class="fa fa-download"></i>Download Image</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  
 	<script src="./assets/js/core/jquery.3.2.1.min.js" type="text/javascript">
 	</script> 
 	<script src="./assets/js/core/popper.min.js" type="text/javascript">
@@ -153,7 +190,7 @@
 	    });
 	    
 	    var back_image_src = "./assets/img/nophoto.jpg", frame_src = null, banner_src = null, slogan_text = null, text_color = '#ffffff';
-	    var canvas = new fabric.Canvas('visible',  { width: window.innerWidth, preserveObjectStacking: true });
+	    var canvas = new fabric.Canvas('visible',  { preserveObjectStacking: true });
 	    var disableScroll = function(){
           canvas.allowTouchScrolling = false;
         };
@@ -161,11 +198,6 @@
         var enableScroll = function(){
           canvas.allowTouchScrolling = true;
         };
-
-        canvas.on('object:moving', disableScroll);
-        canvas.on('object:scaling', disableScroll);
-        canvas.on('object:rotating', disableScroll);
-        canvas.on('mouse:up', enableScroll);
       
 	    function render(cur_canvas){
 	        canvas.clear();
@@ -264,8 +296,7 @@
 
 	      $(function(){
 	        render(canvas);
-	        setTimeout(function(){ render(canvas); }, 500);
-	        setTimeout(function(){ render(canvas); }, 500)
+            canvas.setWidth($('#editor').width());
 	      })
 	    
 	      document.getElementById('imgLoader').onchange = function handleImage(e) {
@@ -273,20 +304,9 @@
 	        reader.onload = function (event) {
 	            back_image_src = event.target.result;
 	            render(canvas);
-	            setTimeout(function(){ 
-	              render(canvas); 
-	            }, 500);
-	            setTimeout(function(){ 
-	              render(canvas); 
-	            }, 500)
 	        }
 	        reader.readAsDataURL(e.target.files[0]);
 	      };
-          /*
-	      $(window).on('resize', function(){
-	        render(canvas);
-	      });
-          */
       
 	      $('#upload').on('click', function(){
 	        $('#imgLoader').click();
@@ -307,9 +327,8 @@
 	      });
 	    
 	      $('#slogan-add').on('click', function(){
-	        var inp =$(this).parent().find('input');
-	        slogan_text = inp.val();
-	        inp.val('');
+	        slogan_text = $('#slogan-text').val();
+	        $('#slogan-text').val('');
 	        render(canvas);
 	      });
 	      
@@ -319,7 +338,6 @@
 	            saveAs(blob, "image" + new Date().getTime() + ".png");
 	        });
 	      });
-	    
 	</script>
 </body>
 </html>
