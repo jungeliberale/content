@@ -30,7 +30,10 @@
 	          src: url("./assets/fonts/Montserrat-Regular.otf");
 	        }
 	        
-	        
+            .btn-text{
+                font-family: "Montserrat-Regular", Arial, sans-serif;
+                color: #e5007d;
+            }
 	        .mag-text {
 	          font-family: "Montserrat-Regular", Arial, sans-serif;
 	          color: #e5007d;
@@ -120,6 +123,10 @@
                 </div>
                 <div class="row">
                     <div class="frame-div col-6 attention"><img alt="" class="img-fluid shadow" src="./assets/img/Vorlage%20Rahmen.png"></div>
+                    <div class="frame-div col-6 attention"><img alt="" class="img-fluid shadow" src="./assets/img/Vorlage%201.png"></div>
+                </div>
+                <div class="row">
+                    <div class="frame-div col-6 attention"><img alt="" class="img-fluid shadow" src="./assets/img/Vorlage%202.png"></div>
                 </div>
             </div><br>
             <div class="container">
@@ -131,6 +138,9 @@
                 <div class="row">
                     <div class="banner-div col-6 attention" style="background-color: white"><img alt="" class="img-fluid shadow" src="./assets/img/Text%20Balken%20Hintergrund%204.png"></div>
                     <div class="banner-div col-6 attention"><img alt="" class="img-fluid shadow" src="./assets/img/Text%20Balken%20Hintergrund.png"></div>
+                </div>
+                <div class="row">
+                    <div class="banner-div col-6 attention"><img alt="" class="img-fluid shadow" src="./assets/img/stammtisch.png"></div>    
                 </div>
             </div><br>
             <div class="container">
@@ -287,7 +297,7 @@
 	                }
 	              }
 	            else if(slogan_text != null){
-	                var text = new fabric.Text(slogan_text, { left: 120, top: 120, fill: text_color});
+	                var text = new fabric.Text(slogan_text, { left: 120, top: 120, fill: text_color, fontFamily: "Montserrat-Regular", fontWeight: 'bold'});
 	                canvas.add(text); 
 	                canvas.bringToFront(text);
 	              }
